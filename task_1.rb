@@ -1,47 +1,19 @@
-# frozen_string_literal: false
+# Находит пару чисел в массиве, произведение которых имеет максимальный модуль.
+#
+# @param [Array<Float>] array Входной массив вещественных чисел
+# @return [String] Строка, содержащая результат работы программы
+# @raise [ArgumentError] Возникает, если массив пуст или содержит всего одно число
+# Пример:
+#
+#   input: [3, -5, 1, -2, 7, -8]
+#   output: "Пара чисел, произведение которых имеет самый большой модуль среди всех возможных пар: -8, 7"
+#
+# Функция поддерживает только массивы, содержащие хотя бы два вещественных числа.
+def max_abs_product_pair(array)
+  raise ArgumentError, "Входной массив пустой! Заполните массив вещественными числами." if array.empty?
+  raise ArgumentError, "В массиве всего одно число, нужна хотя бы пара вещественных чисел!" if array.length == 1
 
-
-def func(array)
-  array.each_with_index  do |elem, i|
-    if elem < 0
-      array[i] = -array[i]
-    end
-  end
-
-  max1 = array.max
-  array.delete(max1)
-  max2 = array.max
-  res = [max2, max1].inspect
-
-end
-
-def func2(array)
-  return "Ошибка! Массив пустой." if array.empty?
-
-  array.sort
-
-  if array.first < 0
-    min_element = array.min
-    max_element = array.max
-    res1 = [min_element, max_element].inspect
-  else
-    max1 = array.max
-    array.delete(max1)
-    max2 = array.max
-    res2 = [max2, max1].inspect
-  end
-end
-
-def func3(array)
-  arr = (array.sort { |a,b | a.abs <=> b.abs}).inspect
+  new_arr = (array.sort { |a,b | a.abs <=> b.abs})
+  result = "Пара чисел, произведение которых имеет самый большой модуль среди всех возможных пар: #{new_arr.last}, #{new_arr[-2]}"
 
 end
-
-puts func3([-1.2, 4.3, -8.2])
-puts func3([-1.231, -4.133, -8.222])
-puts func3([-111.2,2.23,3.23,-434.2,5.1212,-6.3222])
-puts func3([])
-puts func3([4.33, -676.22, -8.2, 2.22, 132.1, 14124.21, -13231.222, -132.2])
-
-
-#puts arr = [-1,-2,-4,2, 6, 9, -13, 8].sort { |a,b | a.abs <=> b.abs}

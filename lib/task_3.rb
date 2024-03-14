@@ -4,7 +4,7 @@ require 'prime'
 def prime_with_require(n)
   raise ArgumentError, "N не может быть отрицательным или равняться нулю, для таких значений результатом будет пустой массив" if n <= 0
 
-  result = "Первые #{n} простых чисел: #{(Prime.first(n))}"
+  result = Prime.first(n).inspect
 end
 
 
@@ -30,5 +30,5 @@ def prime(n)
     end
     counter += 1
   end
-  result = "Первые #{n} простых чисел: #{new_arr.inspect}"
+  result = new_arr.inspect
 end

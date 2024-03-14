@@ -14,6 +14,6 @@ def max_abs_product_pair(array)
   raise ArgumentError, "В массиве всего одно число, нужна хотя бы пара вещественных чисел!" if array.length == 1
 
   new_arr = (array.sort { |a,b | a.abs <=> b.abs})
-  result = "Пара чисел, произведение которых имеет самый большой модуль среди всех возможных пар: #{new_arr.last}, #{new_arr[-2]}"
+  result = [new_arr.last, new_arr[-2]].inspect
 
 end

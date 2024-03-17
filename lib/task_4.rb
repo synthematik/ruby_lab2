@@ -12,8 +12,8 @@ def basket_func(x, y)
   raise ArgumentError, "Координаты не могут быть меньше нуля" if x < 0 || y < 0
   return nil if x > 28 || y > 15
 
-  distance_from_basket = Math.sqrt((x - 28)**2 + (y - 15)**2)
+  distance_from_basket = (x-7.5)*(x-7.5) + 2 * y
 
-  distance_from_basket > 6.25 ? 3 : 2
+  distance_from_basket >= (6.25)**2 ? 3 : 2
 
 end
